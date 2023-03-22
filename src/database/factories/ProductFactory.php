@@ -18,17 +18,12 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
+            'name' => fake()->word(),
+            'is_active' => fake()->boolean(),
             'category_id' => ProductCategory::factory(),
-            'stock' => rand(0, 100),
-            'name' => fake()->words(3, true),
-            'description' => fake()->paragraphs(3, true),
-            'identifier' => fake()->unique()->ean13(),
-            'price' => fake()->randomFloat(1, 10, 500),
-            'details' => json_encode([
-                fake()->word() => fake()->words(3, true),
-                fake()->word() => fake()->words(3, true),
-                fake()->word() => fake()->words(3, true),
-            ])
+            'price' => fake()->randomFloat(2, 1, 1000),
+            'stock' => fake()->randomNumber(2),
+            'description' => fake()->words(10, true)
         ];
     }
 }
